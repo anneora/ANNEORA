@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" viewport="700x320" name="Core — Buttons, Inputs, Badges" subtitle="Glass actions, fields, and overline tokens" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: radial-gradient(circle at top, #161616, #000); font-family: var(--font-body); }
+  #root { padding: 30px; }
+  .grain { position: fixed; inset: 0; background: url('../../assets/noise.svg'); opacity: .05; pointer-events: none; }
+  .row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+  .cap { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--bone-400); width: 100%; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../ds-bundle.js"></script>
+<script type="text/babel">
+  const { Button, Input, Badge } = window.AnneoraDesignSystem_7f3db2;
+  function Demo() {
+    return (
+      <div>
+        <div className="row">
+          <span className="cap">Buttons</span>
+          <Button variant="glow" size="lg">Listen</Button>
+          <Button variant="ghost">Follow</Button>
+          <Button variant="text">Read more</Button>
+          <Button variant="ghost" disabled>Disabled</Button>
+        </div>
+        <div className="row">
+          <span className="cap">Badges</span>
+          <Badge>2025</Badge>
+          <Badge variant="glow">New single</Badge>
+          <Badge variant="soft">Ambient</Badge>
+        </div>
+        <div className="row">
+          <span className="cap">Inputs</span>
+          <div style={{ width: 260 }}><Input variant="capsule" type="email" placeholder="you@void.com" label="Mailing list" /></div>
+          <div style={{ width: 220 }}><Input variant="line" placeholder="Search tracks" /></div>
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

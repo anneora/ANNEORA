@@ -1,0 +1,26 @@
+<!-- @dsCard group="Spacing" viewport="700x150" name="Space scale" subtitle="8px rhythm, wide vertical breathing room" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: #050505; font-family: var(--font-body); }
+  .wrap { padding: 24px 28px; display: flex; align-items: flex-end; gap: 16px; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .bar { width: 22px; background: var(--bone-200); border-radius: 3px; }
+  .lbl { font-size: 10px; color: var(--bone-400); letter-spacing: .08em; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="col"><div class="bar" style="height:8px"></div><span class="lbl">2 · 8</span></div>
+    <div class="col"><div class="bar" style="height:12px"></div><span class="lbl">3 · 12</span></div>
+    <div class="col"><div class="bar" style="height:16px"></div><span class="lbl">4 · 16</span></div>
+    <div class="col"><div class="bar" style="height:24px"></div><span class="lbl">5 · 24</span></div>
+    <div class="col"><div class="bar" style="height:32px"></div><span class="lbl">6 · 32</span></div>
+    <div class="col"><div class="bar" style="height:60px"></div><span class="lbl">8 · 60</span></div>
+    <div class="col"><div class="bar" style="height:80px"></div><span class="lbl">9 · 80</span></div>
+  </div>
+</body>
+</html>

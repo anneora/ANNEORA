@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Bone / Light" subtitle="Type & foreground tones" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: #000; font-family: var(--font-body); }
+  .wrap { display: flex; gap: 12px; padding: 22px; }
+  .sw { flex: 1; height: 92px; border-radius: 8px; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; }
+  .sw b { font-size: 11px; font-weight: 500; color: #0a0a0a; letter-spacing: .08em; }
+  .sw span { font-size: 10px; color: rgba(10,10,10,.55); }
+  .sw.dk b { color: var(--bone-100); }
+  .sw.dk span { color: var(--bone-400); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="sw" style="background:var(--bone-50)"><b>50</b><span>#f5f5f5</span></div>
+    <div class="sw" style="background:var(--bone-100)"><b>100</b><span>#e5e5e5</span></div>
+    <div class="sw" style="background:var(--bone-200)"><b>200</b><span>#c8c8c8</span></div>
+    <div class="sw" style="background:var(--bone-300)"><b>300</b><span>#9a9a9a</span></div>
+    <div class="sw dk" style="background:var(--bone-400)"><b>400</b><span>#6b6b6b</span></div>
+  </div>
+</body>
+</html>

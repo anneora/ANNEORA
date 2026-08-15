@@ -1,0 +1,24 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Glass & grain" subtitle="Frosted panels floating in a grained void" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: radial-gradient(circle at top, #1a1a1a, #000); position: relative; font-family: var(--font-body); }
+  .grain { position: absolute; inset: 0; background: url('../assets/noise.svg'); opacity: .06; pointer-events: none; }
+  .wrap { position: relative; padding: 28px; display: flex; gap: 18px; }
+  .panel { flex: 1; height: 120px; border-radius: 10px; background: var(--veil-04); border: 1px solid var(--veil-08); backdrop-filter: blur(10px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+  .panel.glow { box-shadow: var(--glow-strong), var(--glow-inset); border-color: var(--veil-12); }
+  .lbl { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--bone-300); }
+  .orb { width: 34px; height: 34px; border-radius: 50%; background: var(--bone-50); box-shadow: var(--glow-text); }
+</style>
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="wrap">
+    <div class="panel"><span class="lbl">glass · veil-08 · blur 10</span></div>
+    <div class="panel glow"><div class="orb"></div><span class="lbl">glow panel</span></div>
+  </div>
+</body>
+</html>

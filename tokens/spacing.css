@@ -1,0 +1,32 @@
+/* ============================================================
+   Anneora — Spacing & layout tokens
+   A calm 8px rhythm with extra-wide vertical breathing room.
+   Sections sit on tall padding so each idea lives alone in the
+   dark — the way the music does.
+   ============================================================ */
+
+:root {
+  /* ---- Space scale (8px base) ----------------------------- */
+  --space-0:  0;
+  --space-1:  0.25rem;  /* 4  */
+  --space-2:  0.5rem;   /* 8  */
+  --space-3:  0.75rem;  /* 12 */
+  --space-4:  1rem;     /* 16 */
+  --space-5:  1.5rem;   /* 24 */
+  --space-6:  2rem;     /* 32 */
+  --space-7:  2.5rem;   /* 40 */
+  --space-8:  3.75rem;  /* 60 — section inset */
+  --space-9:  5rem;     /* 80 — section block */
+  --space-10: 7.5rem;   /* 120 */
+
+  /* ---- Containers ----------------------------------------- */
+  --container-narrow: 600px;   /* about / prose */
+  --container-music:  700px;   /* track list */
+  --container-wide:   1100px;
+
+  /* ---- Semantic ------------------------------------------- */
+  --gap-stack:    var(--space-5);
+  --pad-card:     var(--space-4);
+  --pad-section:  var(--space-9);
+  --inset-page:   var(--space-5);
+}

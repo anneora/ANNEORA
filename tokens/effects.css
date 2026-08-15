@@ -1,0 +1,41 @@
+/* ============================================================
+   Anneora — Effects: radius, glass, glow, grain, motion
+   The whole UI is glass floating in black. Borders are
+   hairline veils, fills are barely-there, and light leaks
+   out of edges as a soft halo rather than a hard shadow.
+   ============================================================ */
+
+:root {
+  /* ---- Corner radius -------------------------------------- */
+  --radius-sm:   6px;
+  --radius-md:   10px;   /* track / card — from source site */
+  --radius-lg:   16px;
+  --radius-pill: 999px;
+  --radius-round:50%;
+
+  /* ---- Glass surface (frosted, see-through) --------------- */
+  --glass-fill:   var(--veil-04);
+  --glass-border: 1px solid var(--veil-08);
+  --glass-blur:   blur(10px); /* @kind other */
+
+  /* ---- Halo / glow (light, never a drop shadow) ----------- */
+  --glow-soft:   0 0 20px rgba(255, 255, 255, 0.10);
+  --glow-text:   0 0 20px rgba(255, 255, 255, 0.20);  /* hero */
+  --glow-strong: 0 0 32px rgba(255, 255, 255, 0.16);
+  --glow-inset:  inset 0 0 24px rgba(255, 255, 255, 0.03);
+
+  /* depth shadow — used sparingly, kept near-black & wide */
+  --shadow-float: 0 24px 60px rgba(0, 0, 0, 0.6);
+
+  /* ---- Grain overlay -------------------------------------- */
+  --grain-url:     url('/assets/noise.svg'); /* @kind other */
+  --grain-opacity: 0.05; /* @kind other */
+
+  /* ---- Motion (slow, dissolving — nothing snaps) ---------- */
+  --ease-veil:   cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --dur-fast:    180ms; /* @kind other */
+  --dur-base:    320ms; /* @kind other */
+  --dur-slow:    600ms; /* @kind other */
+  --dur-drift:   1200ms;  /* @kind other */
+}
