@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Glow & Veils" subtitle="The one accent: cold-white halo + glass hairlines" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: radial-gradient(circle at top, #1a1a1a, #000); font-family: var(--font-body); }
+  .wrap { display: flex; gap: 14px; padding: 24px; align-items: center; }
+  .tile { flex: 1; height: 96px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .orb { width: 40px; height: 40px; border-radius: 50%; background: var(--bone-50); }
+  .lbl { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--bone-300); }
+  .veil { border: 1px solid var(--veil-08); background: var(--veil-04); backdrop-filter: blur(10px); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="tile"><div class="orb" style="box-shadow:var(--glow-text)"></div><span class="lbl">halo .20</span></div>
+    <div class="tile"><div class="orb" style="box-shadow:0 0 32px var(--halo-strong)"></div><span class="lbl">halo .45</span></div>
+    <div class="tile veil"><span class="lbl">veil-04 fill</span></div>
+    <div class="tile" style="border:1px solid var(--veil-08)"><span class="lbl">veil-08 border</span></div>
+    <div class="tile" style="border:1px solid var(--veil-12)"><span class="lbl">veil-12 border</span></div>
+  </div>
+</body>
+</html>

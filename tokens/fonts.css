@@ -1,0 +1,9 @@
+/* ============================================================
+   Anneora — Fonts
+   Display: Cinzel (engraved, classical, ethereal serif)
+   Body:    Inter (light, quiet, modern sans)
+   Both shipped from Google Fonts. Cinzel weights 300/500,
+   Inter weight 300/400 — matching the source site's restraint.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap');

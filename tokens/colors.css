@@ -1,0 +1,49 @@
+/* ============================================================
+   Anneora — Color tokens
+   A near-black, monochrome palette lifted straight from the
+   source site: radial black ground, bone-white type, faint
+   cold-white veils. The only "color" is the glow.
+   ============================================================ */
+
+:root {
+  /* ---- Base ink / ground ---------------------------------- */
+  --void-900: #000000;   /* absolute black — page floor */
+  --void-800: #0a0a0a;
+  --void-700: #121212;
+  --void-600: #1a1a1a;   /* top of the radial gradient */
+  --void-500: #242424;   /* raised surfaces */
+  --void-400: #2e2e2e;
+
+  /* ---- Bone / light --------------------------------------- */
+  --bone-50:  #f5f5f5;   /* hero type */
+  --bone-100: #e5e5e5;   /* default body text */
+  --bone-200: #c8c8c8;
+  --bone-300: #9a9a9a;   /* muted / captions */
+  --bone-400: #6b6b6b;   /* faint / disabled */
+
+  /* ---- The glow (cold white halo — the brand's one accent) */
+  --halo:        rgba(255, 255, 255, 0.20);
+  --halo-strong: rgba(255, 255, 255, 0.45);
+  --halo-faint:  rgba(255, 255, 255, 0.06);
+
+  /* ---- Hairlines / veils (glass borders & fills) ---------- */
+  --veil-08: rgba(255, 255, 255, 0.08);  /* card borders */
+  --veil-12: rgba(255, 255, 255, 0.12);
+  --veil-04: rgba(255, 255, 255, 0.04);  /* card fill */
+  --veil-02: rgba(255, 255, 255, 0.02);
+
+  /* ---- Semantic aliases ----------------------------------- */
+  --bg-page:        var(--void-900);
+  --bg-radial-top:  var(--void-600);
+  --surface-card:   var(--veil-04);
+  --surface-raised: var(--void-500);
+  --border-hairline: var(--veil-08);
+  --border-strong:   var(--veil-12);
+
+  --text-display: var(--bone-50);
+  --text-body:    var(--bone-100);
+  --text-muted:   var(--bone-300);
+  --text-faint:   var(--bone-400);
+
+  --accent-glow:  var(--halo);
+}
