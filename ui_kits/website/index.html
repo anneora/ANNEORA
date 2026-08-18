@@ -29,6 +29,8 @@
     opacity: 0.02; pointer-events: none;
   }
   .nav-fixed { position: fixed; top: 0; left: 0; right: 0; z-index: 40; }
+  .responsive-nav-shell { position: relative; }
+  .responsive-nav-toggle, .responsive-nav-menu { display: none; }
   @keyframes drift { from { transform: translateY(16px); filter: blur(8px); } to { transform: none; filter: none; } }
   /* base state is fully visible; entrance animates blur/transform only (opacity stays 1),
      so content is never hidden in print / hidden-tab renders. No transform on the
@@ -68,6 +70,18 @@
     .visions-gallery__track { --gallery-gap: 8px; animation-duration: 75s; }
     .visions-gallery__tile { flex-basis: calc((100vw - 42px) / 2); }
   }
+  @media (max-width: 680px) {
+    .responsive-nav { padding: 16px 20px !important; }
+    .responsive-nav > div { display: none !important; }
+    .responsive-nav-toggle { position: absolute; top: 16px; right: 20px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 34px; height: 34px; padding: 0; border: 0; background: transparent; color: var(--bone-50); cursor: pointer; }
+    .responsive-nav-toggle span { width: 20px; height: 1px; background: currentColor; transition: transform 220ms ease, opacity 220ms ease; }
+    .responsive-nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .responsive-nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .responsive-nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .responsive-nav-menu { position: absolute; top: calc(100% + 8px); left: 12px; right: 12px; padding: 10px; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; background: rgba(8,8,8,0.78); backdrop-filter: blur(18px); box-shadow: 0 16px 40px rgba(0,0,0,0.38); }
+    .responsive-nav-menu.is-open { display: grid; gap: 2px; }
+    .responsive-nav-menu button { width: 100%; padding: 14px 12px; border: 0; background: transparent; color: var(--bone-100); cursor: pointer; font-family: 'Inter', system-ui, sans-serif; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.18em; text-align: left; text-transform: uppercase; }
+  }
   @media (prefers-reduced-motion: reduce) { .visions-gallery__track, .about-vinyl:hover .about-vinyl__record, .about-vinyl:focus-visible .about-vinyl__record { animation: none; } }
   @media (prefers-reduced-motion: no-preference) {
     #app-sections > .drift { animation: drift 1100ms cubic-bezier(0.16,1,0.3,1) backwards; }
@@ -91,6 +105,33 @@
 <script type="text/babel" src="Footer.jsx"></script>
 <script type="text/babel">
   const { NavBar, Button } = window.AnneoraDesignSystem_7f3db2;
+
+  function ResponsiveNav({ active, onNavigate, scrolled }) {
+    const [menuOpen, setMenuOpen] = React.useState(false);
+    const mobileLinks = ['Music', 'Visions', 'About', 'Contact'];
+    const navigate = (label) => {
+      setMenuOpen(false);
+      onNavigate(label);
+    };
+
+    return (
+      <div className="responsive-nav-shell">
+        <NavBar
+          className="responsive-nav"
+          links={['Music', 'Visions', 'About']}
+          active={active}
+          onNavigate={navigate}
+          onBrandClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          scrolled={scrolled}
+          right={<Button size="sm" variant="ghost" onClick={() => navigate('Contact')}>Contact</Button>}
+        />
+        <button type="button" className="responsive-nav-toggle" aria-label="Open navigation menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(open => !open)}><span /><span /><span /></button>
+        <div className={`responsive-nav-menu${menuOpen ? ' is-open' : ''}`}>
+          {mobileLinks.map(label => <button key={label} type="button" onClick={() => navigate(label)}>{label}</button>)}
+        </div>
+      </div>
+    );
+  }
 
   function App() {
     const [scrolled, setScrolled] = React.useState(false);
@@ -179,13 +220,10 @@
     return (
       <React.Fragment>
         <div className="nav-fixed">
-          <NavBar
-            links={['Music', 'Visions', 'About']}
+          <ResponsiveNav
             active={active}
             onNavigate={go}
-            onBrandClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             scrolled={scrolled}
-            right={<Button size="sm" variant="ghost" onClick={() => go('Contact')}>Contact</Button>}
           />
         </div>
         <div id="app-sections">
