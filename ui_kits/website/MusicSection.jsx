@@ -7,11 +7,11 @@ const ART = (hash) => `https://i.scdn.co/image/ab67616d00001e02${hash}`;
 
 // Real releases — open.spotify.com/artist/2Ny3eT14SfY0h8owBDWgGQ
 const TRACKS = [
-  { title: 'Beyond The Veil', meta: 'Single · 2025', art: ART('7db50b00803ac494607c12da'), audio: '../../Songs/Beyond%20The%20Veil.wav', previewStart: 49, previewEnd: 82, href: 'https://open.spotify.com/album/0uxp5yJowPAsKvc233in1E' },
-  { title: 'Angel Wings',     meta: 'Single · 2025', art: ART('c97e74d5b6618f91b522087f'), audio: '../../Songs/Angel%20Wings.wav', previewStart: 0, previewEnd: 29, href: 'https://open.spotify.com/album/7y2o2KHNtYdTrpmdulMSBc' },
-  { title: 'ECHOS',           meta: 'Single · 2025', art: ART('12b4519cf8c515414ef003f1'), audio: '../../Songs/Echos.wav', previewStart: 44, previewEnd: 59, href: 'https://open.spotify.com/album/4Jk7gWeZcedfLUjwMEPtff' },
-  { title: 'SPENTTIMEALONE',  meta: 'Single · 2025', art: ART('a94c4b8130bdc2c316c8b5d7'), audio: '../../Songs/SPENTTIMEALONE.wav', previewStart: 13, previewEnd: 42, href: 'https://open.spotify.com/album/7KawqYHuInjqwzXuhnjp3H' },
-  { title: 'NO NAME',         meta: 'Single · 2023', art: ART('711986a98fcc645f9b35d506'), audio: '../../Songs/NO%20NAME.wav', previewStart: 21, previewEnd: 41, href: 'https://open.spotify.com/album/481EtNXt19MdtdqfPXvk8U' },
+  { title: 'Beyond The Veil', meta: 'Single · 2025', art: ART('7db50b00803ac494607c12da'), audio: '../../assets/audio/beyond-the-veil.mp3', previewStart: 49, previewEnd: 82, href: 'https://open.spotify.com/album/0uxp5yJowPAsKvc233in1E' },
+  { title: 'Angel Wings',     meta: 'Single · 2025', art: ART('c97e74d5b6618f91b522087f'), audio: '../../assets/audio/angel-wings.mp3', previewStart: 0, previewEnd: 29, href: 'https://open.spotify.com/album/7y2o2KHNtYdTrpmdulMSBc' },
+  { title: 'ECHOS',           meta: 'Single · 2025', art: ART('12b4519cf8c515414ef003f1'), audio: '../../assets/audio/echos.mp3', previewStart: 44, previewEnd: 59, href: 'https://open.spotify.com/album/4Jk7gWeZcedfLUjwMEPtff' },
+  { title: 'SPENTTIMEALONE',  meta: 'Single · 2025', art: ART('a94c4b8130bdc2c316c8b5d7'), audio: '../../assets/audio/spenttimealone.mp3', previewStart: 13, previewEnd: 42, href: 'https://open.spotify.com/album/7KawqYHuInjqwzXuhnjp3H' },
+  { title: 'NO NAME',         meta: 'Single · 2023', art: ART('711986a98fcc645f9b35d506'), audio: '../../assets/audio/no-name.mp3', previewStart: 21, previewEnd: 41, href: 'https://open.spotify.com/album/481EtNXt19MdtdqfPXvk8U' },
   { title: 'BLEED TO SURVIVE',meta: 'Single · 2023', art: '../../assets/bleed-to-survive.png', audio: '../../Songs/BLEED%20TO%20SURVIVE.mp3', href: 'https://open.spotify.com/album/4lSKlt8Bk1hZBjuMg2RjAh' },
 ];
 
