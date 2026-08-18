@@ -10,6 +10,8 @@ export interface NavBarProps {
   onNavigate?: (label: string) => void;
   /** Optional handler for the visually unchanged wordmark. */
   onBrandClick?: () => void;
+  /** Links shown in the compact mobile menu. */
+  menuLinks?: string[];
   /** Optional node pinned to the far right (e.g. a Button). */
   right?: React.ReactNode;
   /** Frost + hairline border once the page has scrolled. */

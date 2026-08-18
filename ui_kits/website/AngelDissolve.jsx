@@ -135,7 +135,9 @@ function AngelDissolve() {
       if (!e.particles.length) return;
 
       const ox = (W - e.imgW) / 2;
-      const oy = H - e.imgH;   // bottom-anchored: image bottom sits on the viewport bottom
+      // Lift the artwork on phone-width screens so it remains visible above
+      // the fold instead of beginning below the navigation.
+      const oy = H - e.imgH - (W <= 680 ? H * 0.16 : 0);
       const floatY = reduce ? 0 : Math.sin(time * 0.8) * 6;
       const mx = reduce ? 0 : e.mouse.x, my = reduce ? 0 : e.mouse.y;
 

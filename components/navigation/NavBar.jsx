@@ -10,13 +10,21 @@ export function NavBar({
   active,
   onNavigate,
   onBrandClick,
+  menuLinks = links,
   right = null,
   scrolled = false,
   style = {},
   ...rest
 }) {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
+  const navigate = (key) => {
+    setMenuOpen(false);
+    onNavigate && onNavigate(key);
+  };
+
   return (
-    <nav
+    <nav className="anneora-nav"
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -30,6 +38,22 @@ export function NavBar({
       }}
       {...rest}
     >
+      <style>{`
+        .anneora-nav__desktop { display: flex; align-items: center; gap: 32px; }
+        .anneora-nav__menu-toggle, .anneora-nav__mobile-menu { display: none; }
+        @media (max-width: 680px) {
+          .anneora-nav { padding: 16px 20px !important; }
+          .anneora-nav__desktop { display: none !important; }
+          .anneora-nav__menu-toggle { display: inline-flex; flex-direction: column; gap: 5px; width: 34px; height: 34px; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: var(--bone-50, #f5f5f5); cursor: pointer; }
+          .anneora-nav__menu-toggle span { width: 20px; height: 1px; background: currentColor; transition: transform 220ms ease, opacity 220ms ease; }
+          .anneora-nav__menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+          .anneora-nav__menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+          .anneora-nav__menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+          .anneora-nav__mobile-menu { position: absolute; top: calc(100% + 8px); left: 12px; right: 12px; padding: 10px; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; background: rgba(8,8,8,0.78); backdrop-filter: blur(18px); box-shadow: 0 16px 40px rgba(0,0,0,0.38); }
+          .anneora-nav__mobile-menu.is-open { display: grid; gap: 2px; }
+          .anneora-nav__mobile-link { width: 100%; padding: 14px 12px; border: 0; background: transparent; color: var(--bone-100, #e5e5e5); cursor: pointer; font-family: 'Inter', system-ui, sans-serif; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.18em; text-align: left; text-transform: uppercase; }
+        }
+      `}</style>
       <button
         type="button"
         onClick={onBrandClick}
@@ -48,7 +72,7 @@ export function NavBar({
         }}
       >{brand}</button>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+      <div className="anneora-nav__desktop" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
         {links.map((l) => {
           const key = typeof l === 'string' ? l : l.label;
           const isActive = active === key;
@@ -56,7 +80,7 @@ export function NavBar({
             <button
               key={key}
               type="button"
-              onClick={() => onNavigate && onNavigate(key)}
+              onClick={() => navigate(key)}
               style={{
                 background: 'none',
                 border: 'none',
@@ -79,6 +103,19 @@ export function NavBar({
           );
         })}
         {right}
+      </div>
+      <button
+        type="button"
+        className="anneora-nav__menu-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen(open => !open)}
+      ><span /><span /><span /></button>
+      <div className={`anneora-nav__mobile-menu${menuOpen ? ' is-open' : ''}`}>
+        {menuLinks.map((l) => {
+          const key = typeof l === 'string' ? l : l.label;
+          return <button key={key} type="button" className="anneora-nav__mobile-link" onClick={() => navigate(key)}>{key}</button>;
+        })}
       </div>
     </nav>
   );
