@@ -8,7 +8,9 @@ const IMAGES = [
   '20260505_203638.jpg', '20260505_203659.jpg', 'motion_photo_8883218370549635857.jpg', 'Snapchat-429483661.jpg',
 ];
 
-const imagePath = (image) => encodeURI(`../../pictures/art_gallery/${image}`);
+const webpName = (image) => image.replace(/\.[^.]+$/, '.webp');
+const thumbnailPath = (image) => encodeURI(`../../assets/gallery/thumb/${webpName(image)}`);
+const lightboxPath = (image) => encodeURI(`../../assets/gallery/full/${webpName(image)}`);
 
 function Gallery() {
   const [selectedIndex, setSelectedIndex] = React.useState(null);
@@ -35,7 +37,12 @@ function Gallery() {
             const imageIndex = index % IMAGES.length;
             return (
               <button className="visions-gallery__tile" key={`${index}-${image}`} onClick={() => setSelectedIndex(imageIndex)} aria-label={`Open vision ${imageIndex + 1}`}>
-                <img src={imagePath(image)} alt={`Vision ${imageIndex + 1}`} loading={index < 6 ? 'eager' : 'lazy'} />
+                <img
+                  src={thumbnailPath(image)}
+                  alt={`Vision ${imageIndex + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                />
               </button>
             );
           })}
@@ -45,7 +52,7 @@ function Gallery() {
       {selectedIndex !== null && (
         <div className="image-lightbox" role="dialog" aria-modal="true" aria-label={`Vision ${selectedIndex + 1}`} onClick={() => setSelectedIndex(null)}>
           <button className="image-lightbox__close" onClick={() => setSelectedIndex(null)} aria-label="Close full image">×</button>
-          <img src={imagePath(IMAGES[selectedIndex])} alt={`Vision ${selectedIndex + 1}`} onClick={(event) => event.stopPropagation()} />
+          <img src={lightboxPath(IMAGES[selectedIndex])} alt={`Vision ${selectedIndex + 1}`} decoding="async" onClick={(event) => event.stopPropagation()} />
           <p>Use the arrow keys to browse</p>
         </div>
       )}
