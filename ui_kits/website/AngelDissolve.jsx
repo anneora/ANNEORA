@@ -187,7 +187,7 @@ function AngelDissolve() {
 
   return (
     <section ref={wrapRef} style={{ position: 'relative', height: '280vh' }}>
-      <div ref={stageRef} style={{
+      <div ref={stageRef} data-cursor="wings" style={{
         position: 'sticky', top: 0, height: '100vh', width: '100%',
         overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>

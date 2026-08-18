@@ -28,6 +28,36 @@
     background: url('../../assets/noise.svg');
     opacity: 0.02; pointer-events: none;
   }
+  .celestial-cursor { display: none; }
+  @media (hover: hover) and (pointer: fine) {
+    html.has-celestial-cursor, html.has-celestial-cursor * { cursor: none !important; }
+    .celestial-cursor {
+      display: block; position: fixed; top: 0; left: 0; width: 1px; height: 1px;
+      z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 160ms ease;
+      color: #e8e5df; will-change: transform;
+    }
+    .celestial-cursor[data-visible="true"] { opacity: 1; }
+    .celestial-cursor__sigil { position: absolute; width: 34px; height: 34px; left: -17px; top: -17px; overflow: visible; filter: drop-shadow(0 0 3px rgba(232,229,223,0.28)); }
+    .celestial-cursor__sigil path { vector-effect: non-scaling-stroke; stroke: currentColor; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; transform-box: fill-box; transform-origin: center; transition: opacity 190ms ease, transform 330ms cubic-bezier(.16,1,.3,1); }
+    .celestial-cursor__cross { fill: currentColor; stroke: none !important; opacity: 1; transform: scale(.42) rotate(0deg); }
+    .celestial-cursor__halo { opacity: 0; transform: scale(.35) rotate(-20deg); }
+    .celestial-cursor__dagger { opacity: 0; transform: scale(.42); }
+    .celestial-cursor__wings { opacity: 0; transform-origin: center; transform: scale(.56); transition: opacity 190ms ease, transform 360ms cubic-bezier(.16,1,.3,1); }
+    .celestial-cursor__wings path { stroke: currentColor; stroke-width: 1; fill: none; }
+    .celestial-cursor[data-mode="pointer"] .celestial-cursor__cross { transform: scale(.5) rotate(45deg); }
+    .celestial-cursor[data-mode="pointer"] .celestial-cursor__halo { opacity: .92; transform: scale(1) rotate(12deg); }
+    .celestial-cursor[data-mode="text"] .celestial-cursor__cross, .celestial-cursor[data-mode="text"] .celestial-cursor__halo { opacity: 0; transform: scale(.25); }
+    .celestial-cursor[data-mode="text"] .celestial-cursor__dagger { opacity: 1; transform: scale(.72); }
+    .celestial-cursor[data-mode="wings"] .celestial-cursor__halo { opacity: .34; transform: scale(.82) rotate(22deg); }
+    .celestial-cursor[data-mode="wings"] .celestial-cursor__cross { transform: scale(.46) rotate(0deg); }
+    .celestial-cursor[data-mode="wings"] .celestial-cursor__wings { opacity: .76; transform: scale(1); }
+    .celestial-cursor[data-pressed="true"] .celestial-cursor__sigil { transform: scale(.78); filter: drop-shadow(0 0 1px rgba(232,229,223,0.18)); }
+    .celestial-cursor__ghost { position: absolute; left: -2px; top: -2px; width: 4px; height: 4px; border: 1px solid rgba(232,229,223,.42); border-radius: 50%; opacity: .18; will-change: transform; }
+    .celestial-cursor__ghost--two { width: 2px; height: 2px; left: -1px; top: -1px; opacity: .12; }
+    .celestial-cursor__particles { position: absolute; inset: 0; }
+    .celestial-cursor__particles i { position: absolute; left: -1px; top: -1px; width: 2px; height: 2px; border-radius: 50%; background: currentColor; box-shadow: 0 0 4px rgba(232,229,223,.55); animation: celestial-particle 320ms ease-out forwards; }
+    @keyframes celestial-particle { from { opacity: .8; transform: translate(0, 0) scale(1); } to { opacity: 0; transform: translate(var(--particle-x), var(--particle-y)) scale(.3); } }
+  }
   .nav-fixed { position: fixed; top: 0; left: 0; right: 0; z-index: 40; }
   .responsive-nav-shell { position: relative; }
   .responsive-nav-toggle, .responsive-nav-menu { display: none; }
@@ -103,6 +133,7 @@
 <script type="text/babel" src="Gallery.jsx"></script>
 <script type="text/babel" src="AboutSection.jsx"></script>
 <script type="text/babel" src="Footer.jsx"></script>
+<script type="text/babel" src="CelestialCursor.jsx"></script>
 <script type="text/babel">
   const { NavBar, Button } = window.AnneoraDesignSystem_7f3db2;
 
@@ -221,6 +252,7 @@
 
     return (
       <React.Fragment>
+        <window.CelestialCursor />
         <div className="nav-fixed">
           <ResponsiveNav
             active={active}
