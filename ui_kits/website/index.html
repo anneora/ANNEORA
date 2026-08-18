@@ -173,7 +173,9 @@
       }
 
       current?.pause();
-      const audio = new Audio(track.audio);
+      const audio = new Audio();
+      audio.preload = 'metadata';
+      audio.src = track.audio;
       audioRef.current = audio;
       setSelected(track.title);
 
